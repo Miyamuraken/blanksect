@@ -102,10 +102,8 @@ export default function FlowerOfLifeCipher({ onReveal, size = 46 }) {
 
       <style jsx>{`
         .fol-trigger {
-          position: absolute;
-          right: 1.5rem;
-          top: 50%;
-          transform: translateY(-50%);
+          grid-column: 3;
+          justify-self: end;
           background: none;
           border: none;
           padding: 0.5rem;
@@ -117,6 +115,12 @@ export default function FlowerOfLifeCipher({ onReveal, size = 46 }) {
         .fol-trigger:hover {
           opacity: 0.9;
           color: var(--bronze);
+        }
+        @media (pointer: coarse) {
+          .fol-trigger {
+            /* No hover state on touch — sit a bit more visible by default. */
+            opacity: 0.55;
+          }
         }
         .fol-overlay {
           position: fixed;

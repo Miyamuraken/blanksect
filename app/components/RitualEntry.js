@@ -16,6 +16,12 @@ const FADE_OUT_MS = 700;
 const TRIANGLE_PATH = "M10,183.2 L210,183.2 L110,10 Z";
 const PERIMETER = 600;
 
+// Thick, bold stroke (~6x the original hairline weight). At this weight the
+// sharp miter joins spike out well past the triangle's corners, so the
+// viewBox below is padded generously and the SVG wrapper stays
+// overflow:visible so nothing gets clipped.
+const STROKE_WIDTH = 72;
+
 export default function RitualEntry() {
   const [phase, setPhase] = useState("hidden"); // hidden | drawing | hold | out | done
 
@@ -62,14 +68,14 @@ export default function RitualEntry() {
     <div className={`ritual-entry ritual-${phase}`} aria-hidden="true">
       <svg
         className="ritual-svg"
-        viewBox="0 0 220 193.2"
+        viewBox="-90 -90 400 360"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
           d={TRIANGLE_PATH}
           fill="none"
           stroke="#ffffff"
-          strokeWidth="12"
+          strokeWidth={STROKE_WIDTH}
           strokeLinejoin="miter"
           strokeLinecap="butt"
           strokeDasharray={PERIMETER}

@@ -63,6 +63,7 @@ export default function EmailCapture({ ctaLabel = "Enter the Society", id }) {
         }
         input {
           flex: 1;
+          min-width: 0;
           background: transparent;
           border: none;
           color: var(--text);
@@ -107,6 +108,16 @@ export default function EmailCapture({ ctaLabel = "Enter the Society", id }) {
         }
         .is-error {
           color: var(--accent-bright);
+        }
+        @media (max-width: 420px) {
+          .email-row {
+            flex-direction: column;
+          }
+          button {
+            border-left: none;
+            border-top: 1px solid var(--border);
+            padding: 0.85rem 1rem;
+          }
         }
       `}</style>
     </form>
