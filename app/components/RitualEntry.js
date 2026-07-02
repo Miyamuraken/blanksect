@@ -2,20 +2,25 @@
 
 import { useEffect, useState } from "react";
 
-// Cinematic intro: a solid white equilateral triangle, centered on pure
-// black. Fades + scales in (0.8s), holds (1.2s), then fades out while the
-// homepage is revealed underneath. No outline, no text, no bounce —
-// a quiet luxury-brand reveal rather than a flashy one.
-const FADE_IN_MS = 800;
-const HOLD_MS = 1200;
-const FADE_OUT_MS = 800;
+// Cinematic intro: a single continuous, thick white line draws an
+// equilateral triangle — starting at the left vertex, moving horizontally
+// right along the base, turning sharply upward to the apex, then sloping
+// back down to close the shape. Crisp edges, no glow, no bounce — reads
+// like a precision instrument tracing the mark in one motion.
+const DRAW_MS = 1600;
+const HOLD_MS = 700;
+const FADE_OUT_MS = 700;
+
+// Equilateral triangle: base left -> base right -> apex -> close (back to
+// base left). Side length 200 units, so total perimeter = 600.
+const TRIANGLE_PATH = "M10,183.2 L210,183.2 L110,10 Z";
+const PERIMETER = 600;
 
 export default function RitualEntry() {
-  const [phase, setPhase] = useState("hidden"); // hidden | in | hold | out | done
+  const [phase, setPhase] = useState("hidden"); // hidden | drawing | hold | out | done
 
   useEffect(() => {
-    // Only show once per browser session — repeat visits/navigation during
-    // the same session skip straight to the site.
+    // Only show once per browser session.
     let alreadySeen = false;
     try {
       alreadySeen = sessionStorage.getItem("blanksect_entered") === "1";
@@ -28,11 +33,10 @@ export default function RitualEntry() {
       return;
     }
 
-    // Start on the next frame so the CSS transition actually fires.
-    const raf = requestAnimationFrame(() => setPhase("in"));
+    const raf = requestAnimationFrame(() => setPhase("drawing"));
 
-    const t1 = setTimeout(() => setPhase("hold"), FADE_IN_MS);
-    const t2 = setTimeout(() => setPhase("out"), FADE_IN_MS + HOLD_MS);
+    const t1 = setTimeout(() => setPhase("hold"), DRAW_MS);
+    const t2 = setTimeout(() => setPhase("out"), DRAW_MS + HOLD_MS);
     const t3 = setTimeout(() => {
       setPhase("done");
       try {
@@ -40,7 +44,7 @@ export default function RitualEntry() {
       } catch (e) {
         /* ignore */
       }
-    }, FADE_IN_MS + HOLD_MS + FADE_OUT_MS);
+    }, DRAW_MS + HOLD_MS + FADE_OUT_MS);
 
     return () => {
       cancelAnimationFrame(raf);
@@ -52,11 +56,26 @@ export default function RitualEntry() {
 
   if (phase === "done" || phase === "hidden") return null;
 
-  const logoVisible = phase === "in" || phase === "hold";
+  const isDrawing = phase === "drawing" || phase === "hold";
 
   return (
     <div className={`ritual-entry ritual-${phase}`} aria-hidden="true">
-      <div className={`ritual-triangle ${logoVisible ? "ritual-triangle-visible" : ""}`} />
+      <svg
+        className="ritual-svg"
+        viewBox="0 0 220 193.2"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d={TRIANGLE_PATH}
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth="12"
+          strokeLinejoin="miter"
+          strokeLinecap="butt"
+          strokeDasharray={PERIMETER}
+          className={`ritual-path ${isDrawing ? "ritual-path-drawing" : ""}`}
+        />
+      </svg>
 
       <style jsx>{`
         .ritual-entry {
@@ -73,19 +92,21 @@ export default function RitualEntry() {
           opacity: 0;
           pointer-events: none;
         }
-        .ritual-triangle {
+        .ritual-svg {
           width: clamp(90px, 18vw, 260px);
-          aspect-ratio: 1 / 0.866;
-          background: #ffffff;
-          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-          opacity: 0;
-          transform: scale(0.95);
-          transition: opacity ${FADE_IN_MS}ms ease-in-out,
-            transform ${FADE_IN_MS}ms ease-in-out;
+          height: auto;
+          overflow: visible;
         }
-        .ritual-triangle-visible {
-          opacity: 1;
-          transform: scale(1);
+        .ritual-path {
+          stroke-dashoffset: ${PERIMETER};
+        }
+        .ritual-path-drawing {
+          animation: ritual-draw ${DRAW_MS}ms ease-in-out forwards;
+        }
+        @keyframes ritual-draw {
+          to {
+            stroke-dashoffset: 0;
+          }
         }
         @media (prefers-reduced-motion: reduce) {
           .ritual-entry {
