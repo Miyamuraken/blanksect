@@ -1,14 +1,21 @@
 import DeltaMotif from "./components/DeltaMotif";
 import EmailCapture from "./components/EmailCapture";
+import FlowerOfLifeCipher from "./components/FlowerOfLifeCipher";
+import RitualEntry from "./components/RitualEntry";
+import CandleCursor from "./components/CandleCursor";
+import BlurReveal from "./components/BlurReveal";
 import "./page.css";
 
 export default function Page() {
   return (
     <main>
+      <RitualEntry />
+      <CandleCursor />
       {/* NAV */}
       <nav className="nav">
         <div className="container nav-inner">
           <span className="wordmark">BLANKSECT</span>
+          <FlowerOfLifeCipher />
         </div>
       </nav>
 
@@ -16,7 +23,7 @@ export default function Page() {
       <section className="hero">
         <DeltaMotif completion={0.2} size={260} className="hero-delta" />
         <div className="container hero-content">
-          <p className="eyebrow">A society, not a store</p>
+          <p className="eyebrow emerge">A society, not a store</p>
           <h1 className="hero-headline">
             Most people are sleepwalking
             <br />
@@ -35,21 +42,21 @@ export default function Page() {
         <DeltaMotif completion={0.45} size={200} className="section-delta" />
         <div className="container">
           <p className="eyebrow">The manifesto</p>
-          <p className="manifesto-line">
+          <BlurReveal className="manifesto-line">
             There is no membership fee for the truth. Only readiness.
-          </p>
-          <p className="manifesto-line">
+          </BlurReveal>
+          <BlurReveal className="manifesto-line">
             Blanksect doesn&rsquo;t sell clothing. It marks those who&rsquo;ve already
             decided who they are &mdash; before the world agreed.
-          </p>
-          <p className="manifesto-line">
+          </BlurReveal>
+          <BlurReveal className="manifesto-line">
             The delta on your back isn&rsquo;t decoration. It&rsquo;s change &mdash; the
             symbol of what becomes possible once you stop asking permission to be it.
-          </p>
-          <p className="manifesto-line accent-line">
+          </BlurReveal>
+          <BlurReveal className="manifesto-line accent-line">
             <strong>I AM.</strong> isn&rsquo;t a slogan. It&rsquo;s a declaration. Wear it
             when you mean it.
-          </p>
+          </BlurReveal>
         </div>
       </section>
 
