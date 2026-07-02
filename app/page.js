@@ -4,6 +4,7 @@ import FlowerOfLifeCipher from "./components/FlowerOfLifeCipher";
 import CandleCursor from "./components/CandleCursor";
 import BlurReveal from "./components/BlurReveal";
 import Wordmark from "./components/Wordmark";
+import TShirt360 from "./components/TShirt360";
 import "./page.css";
 
 export default function Page() {
@@ -90,6 +91,7 @@ export default function Page() {
             Front and center. The delta &mdash; quiet, on your back, for those who
             already know what it means.
           </p>
+          <TShirt360 />
           <div className="drop-copy">
             <p>This isn&rsquo;t scarcity. It&rsquo;s selection.</p>
             <p>
