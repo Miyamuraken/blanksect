@@ -16,6 +16,7 @@
 .wordmark {
   grid-column: 2;
   justify-self: center;
+  display: flex;
   font-family: var(--font-mono);
   font-weight: 700;
   font-size: clamp(1.44rem, 7.2vw, 1.84rem);
@@ -23,6 +24,25 @@
   color: var(--text);
   text-shadow: 0 0 18px rgba(237, 234, 234, 0.15);
   white-space: nowrap;
+}
+/* Each letter starts above and out of sight, then drops down into place
+   with a light overshoot + settle, staggered via inline animation-delay. */
+.wordmark-letter {
+  display: inline-block;
+  animation: letter-drop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes letter-drop {
+  0% {
+    transform: translateY(-140%);
+    opacity: 0;
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 /* SHARED */

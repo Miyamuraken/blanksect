@@ -4,6 +4,7 @@ import FlowerOfLifeCipher from "./components/FlowerOfLifeCipher";
 import RitualEntry from "./components/RitualEntry";
 import CandleCursor from "./components/CandleCursor";
 import BlurReveal from "./components/BlurReveal";
+import Wordmark from "./components/Wordmark";
 import "./page.css";
 
 export default function Page() {
@@ -14,7 +15,7 @@ export default function Page() {
       {/* NAV */}
       <nav className="nav">
         <div className="container nav-inner">
-          <span className="wordmark">BLANKSECT</span>
+          <Wordmark text="BLANKSECT" />
           <FlowerOfLifeCipher />
         </div>
       </nav>
