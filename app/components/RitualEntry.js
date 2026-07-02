@@ -2,18 +2,20 @@
 
 import { useEffect, useState } from "react";
 
-// Same bold delta glyph used throughout the site (see DeltaMotif.js) —
-// kept in sync here so the opening ritual and the rest of the page read
-// as one consistent mark.
-const OUTER = "M85,20 L115,20 L165,165 L35,165 Z";
-const INNER = "M100,58 L138,148 L62,148 Z";
+// Cinematic intro: a solid white equilateral triangle, centered on pure
+// black. Fades + scales in (0.8s), holds (1.2s), then fades out while the
+// homepage is revealed underneath. No outline, no text, no bounce —
+// a quiet luxury-brand reveal rather than a flashy one.
+const FADE_IN_MS = 800;
+const HOLD_MS = 1200;
+const FADE_OUT_MS = 800;
 
 export default function RitualEntry() {
-  const [phase, setPhase] = useState("hidden"); // hidden | drawing | question | exit | done
+  const [phase, setPhase] = useState("hidden"); // hidden | in | hold | out | done
 
   useEffect(() => {
-    // Only show once per browser session — repeat visits during the same
-    // session skip straight to the site.
+    // Only show once per browser session — repeat visits/navigation during
+    // the same session skip straight to the site.
     let alreadySeen = false;
     try {
       alreadySeen = sessionStorage.getItem("blanksect_entered") === "1";
@@ -26,9 +28,11 @@ export default function RitualEntry() {
       return;
     }
 
-    setPhase("drawing");
-    const t1 = setTimeout(() => setPhase("question"), 2600);
-    const t2 = setTimeout(() => setPhase("exit"), 4600);
+    // Start on the next frame so the CSS transition actually fires.
+    const raf = requestAnimationFrame(() => setPhase("in"));
+
+    const t1 = setTimeout(() => setPhase("hold"), FADE_IN_MS);
+    const t2 = setTimeout(() => setPhase("out"), FADE_IN_MS + HOLD_MS);
     const t3 = setTimeout(() => {
       setPhase("done");
       try {
@@ -36,9 +40,10 @@ export default function RitualEntry() {
       } catch (e) {
         /* ignore */
       }
-    }, 5300);
+    }, FADE_IN_MS + HOLD_MS + FADE_OUT_MS);
 
     return () => {
+      cancelAnimationFrame(raf);
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
@@ -47,72 +52,40 @@ export default function RitualEntry() {
 
   if (phase === "done" || phase === "hidden") return null;
 
+  const logoVisible = phase === "in" || phase === "hold";
+
   return (
     <div className={`ritual-entry ritual-${phase}`} aria-hidden="true">
-      <svg
-        width="180"
-        height="167"
-        viewBox="0 0 200 185"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <defs>
-          <clipPath id="ritual-delta-clip">
-            <rect x="0" y="185" width="200" height="0" className="ritual-clip-rect" />
-          </clipPath>
-        </defs>
-        <path
-          d={`${OUTER} ${INNER}`}
-          fillRule="evenodd"
-          fill="var(--bronze)"
-          opacity="0.9"
-          clipPath="url(#ritual-delta-clip)"
-        />
-      </svg>
-      <p className="ritual-question">Are you seeking?</p>
+      <div className={`ritual-triangle ${logoVisible ? "ritual-triangle-visible" : ""}`} />
 
       <style jsx>{`
         .ritual-entry {
           position: fixed;
           inset: 0;
           z-index: 200;
-          background: var(--bg);
+          background: #000000;
           display: flex;
-          flex-direction: column;
           align-items: center;
           justify-content: center;
-          gap: 2rem;
-          transition: opacity 0.7s ease;
+          transition: opacity ${FADE_OUT_MS}ms ease-in-out;
         }
-        .ritual-exit {
+        .ritual-out {
           opacity: 0;
           pointer-events: none;
         }
-        .ritual-clip-rect {
-          animation: ritual-reveal 2.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
-        }
-        .ritual-question {
-          font-family: var(--font-display);
-          font-style: italic;
-          font-size: 1.3rem;
-          color: var(--text-muted);
+        .ritual-triangle {
+          width: clamp(90px, 18vw, 260px);
+          aspect-ratio: 1 / 0.866;
+          background: #ffffff;
+          clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
           opacity: 0;
-          animation: ritual-fade-in 1s ease forwards;
-          animation-delay: 2.5s;
+          transform: scale(0.95);
+          transition: opacity ${FADE_IN_MS}ms ease-in-out,
+            transform ${FADE_IN_MS}ms ease-in-out;
         }
-        @keyframes ritual-reveal {
-          from {
-            y: 185;
-            height: 0;
-          }
-          to {
-            y: 20;
-            height: 165;
-          }
-        }
-        @keyframes ritual-fade-in {
-          to {
-            opacity: 1;
-          }
+        .ritual-triangle-visible {
+          opacity: 1;
+          transform: scale(1);
         }
         @media (prefers-reduced-motion: reduce) {
           .ritual-entry {
