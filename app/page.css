@@ -18,8 +18,8 @@
   justify-self: center;
   font-family: var(--font-mono);
   font-weight: 700;
-  font-size: clamp(0.72rem, 3.6vw, 0.92rem);
-  letter-spacing: clamp(0.18em, 2vw, 0.35em);
+  font-size: clamp(1.44rem, 7.2vw, 1.84rem);
+  letter-spacing: clamp(0.14em, 1.6vw, 0.3em);
   color: var(--text);
   text-shadow: 0 0 18px rgba(237, 234, 234, 0.15);
   white-space: nowrap;

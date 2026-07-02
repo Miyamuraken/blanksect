@@ -2,25 +2,18 @@
 
 import { useEffect, useState } from "react";
 
-// Cinematic intro: a single continuous, thick white line draws an
-// equilateral triangle — starting at the left vertex, moving horizontally
-// right along the base, turning sharply upward to the apex, then sloping
-// back down to close the shape. Crisp edges, no glow, no bounce — reads
-// like a precision instrument tracing the mark in one motion.
+// Cinematic intro: the solid delta mark (same glyph as DeltaMotif elsewhere
+// on the site) wipes into view from the bottom up, holds, then fades out to
+// reveal the homepage underneath. Bold filled shape — no thin stroked lines,
+// no miter spikes, just the mark itself resolving into place.
 const DRAW_MS = 1600;
 const HOLD_MS = 700;
 const FADE_OUT_MS = 700;
 
-// Equilateral triangle: base left -> base right -> apex -> close (back to
-// base left). Side length 200 units, so total perimeter = 600.
-const TRIANGLE_PATH = "M10,183.2 L210,183.2 L110,10 Z";
-const PERIMETER = 600;
-
-// Thick, bold stroke (~6x the original hairline weight). At this weight the
-// sharp miter joins spike out well past the triangle's corners, so the
-// viewBox below is padded generously and the SVG wrapper stays
-// overflow:visible so nothing gets clipped.
-const STROKE_WIDTH = 72;
+// Full pointed equilateral triangle with a hollow center — a bold delta,
+// not a hairline outline.
+const OUTER = "M10,183.2 L210,183.2 L110,10 Z";
+const INNER = "M110,62 L165,157.2 L55,157.2 Z";
 
 export default function RitualEntry() {
   const [phase, setPhase] = useState("hidden"); // hidden | drawing | hold | out | done
@@ -62,24 +55,31 @@ export default function RitualEntry() {
 
   if (phase === "done" || phase === "hidden") return null;
 
-  const isDrawing = phase === "drawing" || phase === "hold";
+  const isRevealed = phase === "drawing" || phase === "hold";
 
   return (
     <div className={`ritual-entry ritual-${phase}`} aria-hidden="true">
       <svg
         className="ritual-svg"
-        viewBox="-90 -90 400 360"
+        viewBox="0 0 220 193.2"
         xmlns="http://www.w3.org/2000/svg"
       >
+        <defs>
+          <clipPath id="ritual-clip">
+            <rect
+              className="ritual-clip-rect"
+              x="0"
+              y={isRevealed ? "0" : "193.2"}
+              width="220"
+              height={isRevealed ? "193.2" : "0"}
+            />
+          </clipPath>
+        </defs>
         <path
-          d={TRIANGLE_PATH}
-          fill="none"
-          stroke="#ffffff"
-          strokeWidth={STROKE_WIDTH}
-          strokeLinejoin="miter"
-          strokeLinecap="butt"
-          strokeDasharray={PERIMETER}
-          className={`ritual-path ${isDrawing ? "ritual-path-drawing" : ""}`}
+          d={`${OUTER} ${INNER}`}
+          fillRule="evenodd"
+          fill="#ffffff"
+          clipPath="url(#ritual-clip)"
         />
       </svg>
 
@@ -103,20 +103,15 @@ export default function RitualEntry() {
           height: auto;
           overflow: visible;
         }
-        .ritual-path {
-          stroke-dashoffset: ${PERIMETER};
-        }
-        .ritual-path-drawing {
-          animation: ritual-draw ${DRAW_MS}ms ease-in-out forwards;
-        }
-        @keyframes ritual-draw {
-          to {
-            stroke-dashoffset: 0;
-          }
+        .ritual-clip-rect {
+          transition: y ${DRAW_MS}ms ease-in-out, height ${DRAW_MS}ms ease-in-out;
         }
         @media (prefers-reduced-motion: reduce) {
           .ritual-entry {
             display: none;
+          }
+          .ritual-clip-rect {
+            transition: none;
           }
         }
       `}</style>
