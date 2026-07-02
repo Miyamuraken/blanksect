@@ -144,11 +144,12 @@ section {
 .manifesto-line {
   position: relative;
   z-index: 1;
-  font-family: var(--font-display);
-  font-size: clamp(1.2rem, 2.6vw, 1.6rem);
-  line-height: 1.55;
+  font-family: var(--font-manifesto);
+  font-size: clamp(1.4rem, 3.2vw, 2rem);
+  line-height: 1.35;
+  letter-spacing: 0.01em;
   margin-bottom: 1.6rem;
-  max-width: 30ch;
+  max-width: 34ch;
 }
 .blur-reveal {
   opacity: 0.15;
