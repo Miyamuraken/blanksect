@@ -83,7 +83,6 @@ export default function Page() {
 
       {/* DROP TEASER */}
       <section className="drop">
-        <DeltaMotif completion={1} size={240} className="section-delta" />
         <div className="container drop-inner">
           <p className="eyebrow drop-eyebrow">The first drop &mdash; coming soon</p>
           <h2 className="drop-headline">I AM.</h2>
