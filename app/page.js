@@ -59,27 +59,6 @@ export default function Page() {
         </div>
       </section>
 
-      {/* ABOUT / ORIGIN */}
-      <section className="about">
-        <div className="container about-grid">
-          <p className="eyebrow">Origin</p>
-          <div className="about-text">
-            <p>
-              Blanksect started as a thought between two people who got tired of asking
-              the world for permission.
-            </p>
-            <p>
-              We didn&rsquo;t build a brand. We built a mirror &mdash; for anyone
-              who&rsquo;s ever felt like they were meant for more than what they were
-              told to settle for.
-            </p>
-            <p className="about-emphasis">
-              This isn&rsquo;t influencer merch. It&rsquo;s a belief system you can wear.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* DROP TEASER */}
       <section className="drop">
         <div className="container drop-inner">
@@ -100,13 +79,7 @@ export default function Page() {
             <p>This isn&rsquo;t scarcity. It&rsquo;s selection.</p>
             <p>
               The ones who find this were already looking. The ones who understand it
-              were already becoming. Most people will scroll past &mdash; not because we
-              hid it, but because they weren&rsquo;t seeking it yet.
-            </p>
-            <p>
-              If everyone who saw this actually believed it &mdash; really believed
-              reality bends to conviction &mdash; there&rsquo;d be no fear left in the
-              world. No settling. No asking permission.
+              were already becoming.
             </p>
             <p className="accent-line">
               Most won&rsquo;t. That&rsquo;s not exclusivity. That&rsquo;s just how
@@ -115,6 +88,27 @@ export default function Page() {
           </div>
           <div className="drop-form">
             <EmailCapture ctaLabel="Notify me" id="drop" />
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT / ORIGIN */}
+      <section className="about">
+        <div className="container about-grid">
+          <p className="eyebrow">Origin</p>
+          <div className="about-text">
+            <p>
+              Blanksect started as a thought between two people who got tired of asking
+              the world for permission.
+            </p>
+            <p>
+              We didn&rsquo;t build a brand. We built a mirror &mdash; for anyone
+              who&rsquo;s ever felt like they were meant for more than what they were
+              told to settle for.
+            </p>
+            <p className="about-emphasis">
+              This isn&rsquo;t influencer merch. It&rsquo;s a belief system you can wear.
+            </p>
           </div>
         </div>
       </section>
