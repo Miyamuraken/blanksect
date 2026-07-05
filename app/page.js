@@ -1,6 +1,5 @@
 import DeltaMotif from "./components/DeltaMotif";
 import EmailCapture from "./components/EmailCapture";
-import FlowerOfLifeCipher from "./components/FlowerOfLifeCipher";
 import CandleCursor from "./components/CandleCursor";
 import BlurReveal from "./components/BlurReveal";
 import Wordmark from "./components/Wordmark";
@@ -14,7 +13,6 @@ export default function Page() {
       <nav className="nav">
         <div className="container nav-inner">
           <Wordmark text="BLANKSECT" />
-          <FlowerOfLifeCipher />
         </div>
       </nav>
 
