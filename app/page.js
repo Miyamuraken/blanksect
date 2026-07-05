@@ -66,6 +66,9 @@ export default function Page() {
             <span className="product-name">I AM. Tee</span>
             <span className="product-status">Coming Soon</span>
           </div>
+          <button type="button" className="preorder-btn">
+            Pre-order
+          </button>
           <div className="drop-copy">
             <p>This isn&rsquo;t scarcity. It&rsquo;s selection.</p>
             <p>
