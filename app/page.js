@@ -1,4 +1,3 @@
-import DeltaMotif from "./components/DeltaMotif";
 import EmailCapture from "./components/EmailCapture";
 import CandleCursor from "./components/CandleCursor";
 import BlurReveal from "./components/BlurReveal";
@@ -18,7 +17,6 @@ export default function Page() {
 
       {/* HERO */}
       <section className="hero">
-        <DeltaMotif completion={0.2} size={260} className="hero-delta" />
         <div className="container hero-content">
           <p className="eyebrow emerge">A society, not a store</p>
           <h1 className="hero-headline">
@@ -36,7 +34,6 @@ export default function Page() {
 
       {/* MANIFESTO */}
       <section className="manifesto">
-        <DeltaMotif completion={0.45} size={200} className="section-delta" />
         <div className="container">
           <p className="eyebrow">The manifesto</p>
           <BlurReveal className="manifesto-line">
