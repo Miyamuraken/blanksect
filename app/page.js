@@ -37,15 +37,11 @@ export default function Page() {
         <div className="container">
           <p className="eyebrow">The manifesto</p>
           <BlurReveal className="manifesto-line">
-            There is no membership fee for the truth. Only readiness.
-          </BlurReveal>
-          <BlurReveal className="manifesto-line">
             Blanksect doesn&rsquo;t sell clothing. It marks those who&rsquo;ve already
             decided who they are &mdash; before the world agreed.
           </BlurReveal>
           <BlurReveal className="manifesto-line">
-            The delta on your back isn&rsquo;t decoration. It&rsquo;s change &mdash; the
-            symbol of what becomes possible once you stop asking permission to be it.
+            There is no membership fee for the truth. Only readiness.
           </BlurReveal>
           <BlurReveal className="manifesto-line accent-line">
             <strong>I AM.</strong> isn&rsquo;t a slogan. It&rsquo;s a declaration. Wear it
