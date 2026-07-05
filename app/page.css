@@ -193,12 +193,18 @@ section {
   font-style: italic;
 }
 
-/* DROP */
+/* DROP — deliberately overrides to a light sub-theme, since this is the
+   product showcase. A black t-shirt needs a light canvas to read the way
+   real product photography does; the rest of the site stays dark. */
 .drop {
   position: relative;
-  background: var(--bg-raised);
-  border-top: 1px solid var(--border);
-  border-bottom: 1px solid var(--border);
+  background: #f4f2ec;
+  border-top: 1px solid #e2ddd1;
+  border-bottom: 1px solid #e2ddd1;
+  --text: #17150f;
+  --text-muted: #726d63;
+  --bronze: #8a6a2c;
+  --border: #ddd7c9;
 }
 .drop-inner {
   position: relative;
@@ -209,7 +215,7 @@ section {
   font-weight: 700;
   font-size: clamp(1.8rem, 5vw, 3rem);
   letter-spacing: 0.04em;
-  color: #a19c92;
+  color: #57534a;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
@@ -246,8 +252,7 @@ section {
   width: 100%;
   max-width: 360px;
   height: auto;
-  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.7))
-    drop-shadow(0 0 50px rgba(198, 160, 92, 0.1));
+  filter: drop-shadow(0 25px 45px rgba(0, 0, 0, 0.2));
 }
 
 /* PRODUCT META — a light, honest nod to a shop product card: real name,
