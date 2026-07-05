@@ -111,13 +111,14 @@ section {
   z-index: 1;
 }
 .hero-headline {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(2rem, 5.5vw, 3.4rem);
-  line-height: 1.15;
-  letter-spacing: -0.01em;
+  font-family: var(--font-headline);
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: clamp(2.1rem, 6vw, 3.8rem);
+  line-height: 1.1;
+  letter-spacing: 0.005em;
   margin-bottom: 1.75rem;
-  max-width: 14ch;
+  max-width: 15ch;
 }
 .hero-sub {
   font-size: 1.05rem;
