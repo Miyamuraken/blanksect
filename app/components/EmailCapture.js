@@ -1,11 +1,13 @@
 "use client";
 
 import { useState } from "react";
+import useMagnetic from "../hooks/useMagnetic";
 
 export default function EmailCapture({ ctaLabel = "Enter the Society", id }) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState("idle"); // idle | loading | success | error
   const [message, setMessage] = useState("");
+  const magneticRef = useMagnetic(10);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -40,7 +42,11 @@ export default function EmailCapture({ ctaLabel = "Enter the Society", id }) {
           aria-label="Email address"
           disabled={status === "loading" || status === "success"}
         />
-        <button type="submit" disabled={status === "loading" || status === "success"}>
+        <button
+          ref={magneticRef}
+          type="submit"
+          disabled={status === "loading" || status === "success"}
+        >
           {status === "loading" ? "..." : ctaLabel}
         </button>
       </div>
@@ -58,27 +64,27 @@ export default function EmailCapture({ ctaLabel = "Enter the Society", id }) {
         .email-row {
           display: flex;
           gap: 0;
-          border: 1px solid var(--border);
-          background: var(--bg-raised);
+          border: 1px solid var(--on-ink-border);
+          background: var(--ink-raised);
         }
         input {
           flex: 1;
           min-width: 0;
           background: transparent;
           border: none;
-          color: var(--text);
+          color: var(--on-ink);
           font-family: var(--font-body);
           font-size: 0.9rem;
           padding: 0.9rem 1rem;
           outline: none;
         }
         input::placeholder {
-          color: var(--text-muted);
+          color: var(--on-ink-muted);
         }
         button {
           background: transparent;
           border: none;
-          border-left: 1px solid var(--border);
+          border-left: 1px solid var(--on-ink-border);
           color: var(--bronze);
           font-family: var(--font-mono);
           font-size: 0.7rem;
@@ -87,10 +93,11 @@ export default function EmailCapture({ ctaLabel = "Enter the Society", id }) {
           padding: 0 1.25rem;
           cursor: pointer;
           white-space: nowrap;
-          transition: color 0.2s ease, border-color 0.2s ease;
+          transition: color 0.2s ease, border-color 0.2s ease,
+            transform 0.25s cubic-bezier(0.19, 1, 0.22, 1);
         }
         button:hover:not(:disabled) {
-          color: var(--text);
+          color: var(--on-ink);
           border-color: var(--bronze);
         }
         button:disabled {
@@ -115,7 +122,7 @@ export default function EmailCapture({ ctaLabel = "Enter the Society", id }) {
           }
           button {
             border-left: none;
-            border-top: 1px solid var(--border);
+            border-top: 1px solid var(--on-ink-border);
             padding: 0.85rem 1rem;
           }
         }

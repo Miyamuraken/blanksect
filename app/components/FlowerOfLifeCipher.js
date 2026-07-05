@@ -108,12 +108,12 @@ export default function FlowerOfLifeCipher({ onReveal, size = 46 }) {
           border: none;
           padding: 0.5rem;
           cursor: pointer;
-          color: var(--text-muted);
-          opacity: 0.35;
+          color: var(--on-ink-muted);
+          opacity: 0.7;
           transition: opacity 0.4s ease, color 0.4s ease;
         }
         .fol-trigger:hover {
-          opacity: 0.9;
+          opacity: 1;
           color: var(--bronze);
         }
         @media (pointer: coarse) {
@@ -149,7 +149,7 @@ export default function FlowerOfLifeCipher({ onReveal, size = 46 }) {
           font-family: var(--font-display);
           font-style: italic;
           font-size: 1.3rem;
-          color: var(--text);
+          color: var(--on-ink);
           margin-bottom: 0.75rem;
           line-height: 1.5;
         }
@@ -163,8 +163,8 @@ export default function FlowerOfLifeCipher({ onReveal, size = 46 }) {
         }
         .fol-close {
           background: none;
-          border: 1px solid var(--border);
-          color: var(--text-muted);
+          border: 1px solid var(--on-ink-border);
+          color: var(--on-ink-muted);
           font-family: var(--font-mono);
           font-size: 0.7rem;
           letter-spacing: 0.1em;
@@ -174,7 +174,7 @@ export default function FlowerOfLifeCipher({ onReveal, size = 46 }) {
           transition: color 0.2s ease, border-color 0.2s ease;
         }
         .fol-close:hover {
-          color: var(--text);
+          color: var(--on-ink);
           border-color: var(--bronze);
         }
         @keyframes fol-fade-in {

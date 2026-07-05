@@ -1,12 +1,20 @@
 :root {
-  --bg: #0a0a0a;
-  --bg-raised: #111110;
-  --text: #ededea;
-  --text-muted: #6e6b66;
+  --bg: #f2f0ea;
+  --bg-raised: #fbfaf7;
+  --text: #17150f;
+  --text-muted: #726d63;
   --accent: #7a1f1f;
   --accent-bright: #a3372f;
-  --bronze: #a88a4a;
-  --border: #232220;
+  --bronze: #8a6a2c;
+  --border: #ddd7c9;
+
+  /* Dark chrome — used deliberately for the nav bar and footer, which stay
+     black on purpose to frame the light shopping canvas in between. */
+  --ink: #0a0a0a;
+  --ink-raised: #141311;
+  --on-ink: #ededea;
+  --on-ink-muted: rgba(237, 234, 234, 0.55);
+  --on-ink-border: rgba(237, 234, 234, 0.14);
 
   --font-display: "Bodoni Moda", "Times New Roman", serif;
   --font-manifesto: "Bebas Neue", "Arial Narrow", sans-serif;
@@ -30,6 +38,37 @@ body {
   font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+  animation: page-fade-in 1.1s ease both;
+}
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Fixed, non-interactive noise layer sitting above all content. Gives the
+   flat dark background a faint tactile grain instead of reading as a
+   perfectly flat digital black. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-size: 180px 180px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
 }
 
 a {
@@ -42,7 +81,7 @@ button {
 
 ::selection {
   background: var(--accent);
-  color: var(--text);
+  color: #f5f2ec;
 }
 
 .eyebrow {

@@ -92,6 +92,10 @@ export default function Page() {
           <div className="tshirt-static">
             <img src="/tshirt.png" alt="Blanksect I AM. t-shirt" />
           </div>
+          <div className="product-meta">
+            <span className="product-name">I AM. Tee</span>
+            <span className="product-status">Coming Soon</span>
+          </div>
           <div className="drop-copy">
             <p>This isn&rsquo;t scarcity. It&rsquo;s selection.</p>
             <p>

@@ -25,7 +25,7 @@
   font-weight: 700;
   font-size: clamp(1.44rem, 7.2vw, 1.84rem);
   letter-spacing: clamp(0.14em, 1.6vw, 0.3em);
-  color: var(--text);
+  color: var(--on-ink);
   text-shadow: 0 0 18px rgba(237, 234, 234, 0.15);
   white-space: nowrap;
 }
@@ -208,7 +208,7 @@ section {
   font-weight: 700;
   font-size: clamp(1.8rem, 5vw, 3rem);
   letter-spacing: 0.04em;
-  color: #8c8c8c;
+  color: #57534a;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
@@ -245,7 +245,33 @@ section {
   width: 100%;
   max-width: 360px;
   height: auto;
-  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.55));
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.18));
+}
+
+/* PRODUCT META — a light, honest nod to a shop product card: real name,
+   no fake price or stock count, just a status pill. */
+.product-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 0 auto 3rem;
+}
+.product-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--text);
+}
+.product-status {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bronze);
+  border: 1px solid var(--border);
+  padding: 0.3rem 0.7rem;
+  border-radius: 100px;
 }
 
 /* SOCIAL */
@@ -280,6 +306,8 @@ section {
 /* FOOTER */
 .footer {
   padding: 6rem 0 4rem;
+  background: var(--ink);
+  color: var(--on-ink);
 }
 .footer-inner {
   display: flex;
@@ -291,7 +319,7 @@ section {
   font-family: var(--font-display);
   font-style: italic;
   font-size: 1.15rem;
-  color: var(--text-muted);
+  color: var(--on-ink-muted);
 }
 .footer-links {
   display: flex;
@@ -302,7 +330,7 @@ section {
   text-transform: uppercase;
 }
 .footer-links a {
-  color: var(--text-muted);
+  color: var(--on-ink-muted);
   text-decoration: none;
 }
 .footer-links a:hover {
