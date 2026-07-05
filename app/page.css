@@ -6,9 +6,7 @@
   right: 0;
   z-index: 10;
   padding: 1.5rem 0;
-  background: rgba(10, 10, 10, 0.72);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(6, 6, 6, 0.94);
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 .nav-inner {
@@ -69,9 +67,10 @@ section {
 }
 
 /* Slowly resolves out of darkness — letters gain focus and light as if forming */
-.emerge {
+.eyebrow.emerge {
   animation: emerge-from-dark 3s cubic-bezier(0.19, 1, 0.22, 1) both;
   animation-delay: 0.3s;
+  color: var(--text);
 }
 @keyframes emerge-from-dark {
   0% {
