@@ -22,9 +22,9 @@ export default function Page() {
         <div className="container hero-content">
           <p className="eyebrow emerge">A society, not a store</p>
           <h1 className="hero-headline">
-            Most people are sleepwalking
+            Most people don&rsquo;t know
             <br />
-            through someone else&rsquo;s life.
+            who they really are.
           </h1>
           <p className="hero-sub">
             Blanksect is for the ones who woke up. A society for those who understand:
