@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
 
 const CIRCLE_R = 22;
 
@@ -29,11 +30,49 @@ const CIRCLES = generateCircles();
 
 export default function FlowerOfLifeCipher({ onReveal, size = 46 }) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   function handleActivate() {
     setOpen(true);
     if (onReveal) onReveal();
   }
+
+  const modal = (
+    <div className="fol-overlay" onClick={() => setOpen(false)}>
+      <div className="fol-modal" onClick={(e) => e.stopPropagation()}>
+        <svg
+          width="120"
+          height="120"
+          viewBox="-70 -70 140 140"
+          xmlns="http://www.w3.org/2000/svg"
+          className="fol-modal-svg"
+        >
+          {CIRCLES.map(([cx, cy], i) => (
+            <circle
+              key={i}
+              cx={cx}
+              cy={cy}
+              r={CIRCLE_R}
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1"
+            />
+          ))}
+        </svg>
+        <p className="fol-line">
+          Everything that exists was once inside a thought.
+        </p>
+        <p className="fol-sub">You found this because you were looking.</p>
+        <button type="button" className="fol-close" onClick={() => setOpen(false)}>
+          Close
+        </button>
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -63,42 +102,7 @@ export default function FlowerOfLifeCipher({ onReveal, size = 46 }) {
         </svg>
       </button>
 
-      {open && (
-        <div className="fol-overlay" onClick={() => setOpen(false)}>
-          <div className="fol-modal" onClick={(e) => e.stopPropagation()}>
-            <svg
-              width="120"
-              height="120"
-              viewBox="-70 -70 140 140"
-              xmlns="http://www.w3.org/2000/svg"
-              className="fol-modal-svg"
-            >
-              {CIRCLES.map(([cx, cy], i) => (
-                <circle
-                  key={i}
-                  cx={cx}
-                  cy={cy}
-                  r={CIRCLE_R}
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1"
-                />
-              ))}
-            </svg>
-            <p className="fol-line">
-              Everything that exists was once inside a thought.
-            </p>
-            <p className="fol-sub">You found this because you were looking.</p>
-            <button
-              type="button"
-              className="fol-close"
-              onClick={() => setOpen(false)}
-            >
-              Close
-            </button>
-          </div>
-        </div>
-      )}
+      {open && mounted && createPortal(modal, document.body)}
 
       <style jsx>{`
         .fol-trigger {
@@ -125,11 +129,14 @@ export default function FlowerOfLifeCipher({ onReveal, size = 46 }) {
         .fol-overlay {
           position: fixed;
           inset: 0;
-          background: rgba(10, 10, 10, 0.9);
+          background: rgba(10, 10, 10, 0.82);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           display: flex;
           align-items: center;
           justify-content: center;
-          z-index: 100;
+          z-index: 1000;
+          padding: 2rem;
           animation: fol-fade-in 0.4s ease;
         }
         .fol-modal {
