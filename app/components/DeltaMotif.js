@@ -55,7 +55,7 @@ export default function DeltaMotif({ completion = 1, size = 220, className = "" 
       <path
         d={OUTER}
         fill="none"
-        stroke="rgba(23,21,15,0.35)"
+        stroke="rgba(255,255,255,0.45)"
         strokeWidth="2.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -67,7 +67,7 @@ export default function DeltaMotif({ completion = 1, size = 220, className = "" 
       <path
         d={INNER}
         fill="none"
-        stroke="rgba(23,21,15,0.3)"
+        stroke="rgba(255,255,255,0.4)"
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"

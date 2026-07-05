@@ -209,7 +209,7 @@ section {
   font-weight: 700;
   font-size: clamp(1.8rem, 5vw, 3rem);
   letter-spacing: 0.04em;
-  color: #57534a;
+  color: #a19c92;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
 }
@@ -246,7 +246,8 @@ section {
   width: 100%;
   max-width: 360px;
   height: auto;
-  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.18));
+  filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.7))
+    drop-shadow(0 0 50px rgba(198, 160, 92, 0.1));
 }
 
 /* PRODUCT META — a light, honest nod to a shop product card: real name,

@@ -1,20 +1,20 @@
 :root {
-  --bg: #f2f0ea;
-  --bg-raised: #fbfaf7;
-  --text: #17150f;
-  --text-muted: #726d63;
+  --bg: #060606;
+  --bg-raised: #0f0f0e;
+  --text: #f4f1ea;
+  --text-muted: #8f8b82;
   --accent: #7a1f1f;
-  --accent-bright: #a3372f;
-  --bronze: #8a6a2c;
-  --border: #ddd7c9;
+  --accent-bright: #b5453c;
+  --bronze: #c6a05c;
+  --border: #232220;
 
-  /* Dark chrome — used deliberately for the nav bar and footer, which stay
-     black on purpose to frame the light shopping canvas in between. */
-  --ink: #0a0a0a;
+  /* Same deep-black chrome as the rest of the page now — the nav/footer no
+     longer need a separate treatment since the whole site is dark again. */
+  --ink: #060606;
   --ink-raised: #141311;
-  --on-ink: #ededea;
-  --on-ink-muted: rgba(237, 234, 234, 0.55);
-  --on-ink-border: rgba(237, 234, 234, 0.14);
+  --on-ink: #f4f1ea;
+  --on-ink-muted: rgba(244, 241, 234, 0.55);
+  --on-ink-border: rgba(244, 241, 234, 0.14);
 
   --font-display: "Bodoni Moda", "Times New Roman", serif;
   --font-headline: "Anton", "Arial Narrow", sans-serif;
