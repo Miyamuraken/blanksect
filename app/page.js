@@ -2,6 +2,7 @@ import EmailCapture from "./components/EmailCapture";
 import CandleCursor from "./components/CandleCursor";
 import BlurReveal from "./components/BlurReveal";
 import Wordmark from "./components/Wordmark";
+import PreOrderForm from "./components/PreOrderForm";
 import "./page.css";
 
 export default function Page() {
@@ -60,11 +61,9 @@ export default function Page() {
           </div>
           <div className="product-meta">
             <span className="product-name">I AM. Tee</span>
-            <span className="product-status">Coming Soon</span>
+            <span className="product-status">Pre-order Open</span>
           </div>
-          <button type="button" className="preorder-btn">
-            Pre-order
-          </button>
+          <PreOrderForm />
           <div className="drop-copy">
             <p>This isn&rsquo;t scarcity. It&rsquo;s selection.</p>
             <p>
