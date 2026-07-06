@@ -55,10 +55,6 @@ export default function Page() {
         <div className="container drop-inner">
           <p className="eyebrow drop-eyebrow">The first drop &mdash; coming soon</p>
           <h2 className="drop-headline">I AM.</h2>
-          <p className="drop-sub">
-            Front and center. The delta &mdash; quiet, on your back, for those who
-            already know what it means.
-          </p>
           <div className="tshirt-static">
             <img src="/tshirt.png" alt="Blanksect I AM. t-shirt" />
           </div>
