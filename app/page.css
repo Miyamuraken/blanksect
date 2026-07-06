@@ -267,6 +267,12 @@ section {
   font-size: 1rem;
   color: var(--text);
 }
+.product-price {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text);
+}
 .product-status {
   font-family: var(--font-mono);
   font-size: 0.62rem;
@@ -277,25 +283,40 @@ section {
   padding: 0.3rem 0.7rem;
   border-radius: 100px;
 }
+.preorder-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
 .preorder-btn {
   display: block;
-  margin: 0 auto 3rem;
+  margin: 0;
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--bronze);
-  background: transparent;
-  border: 1px solid var(--bronze);
+  color: #ffffff;
+  background: #000000;
+  border: 1px solid #000000;
   padding: 0.85rem 2.2rem;
   border-radius: 2px;
   cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
+  transition: opacity 0.3s ease;
 }
 .preorder-btn:hover {
-  background: var(--bronze);
-  color: var(--bg-raised);
+  opacity: 0.82;
+}
+.preorder-counter {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
 }
 
 /* SOCIAL */

@@ -3,7 +3,13 @@ import CandleCursor from "./components/CandleCursor";
 import BlurReveal from "./components/BlurReveal";
 import Wordmark from "./components/Wordmark";
 import PreOrderForm from "./components/PreOrderForm";
+import PreOrderCounter from "./components/PreOrderCounter";
 import "./page.css";
+
+// Reads Edge Config fresh on every request instead of caching, so the
+// pre-order count updates the moment Abhinav changes it in the Vercel
+// dashboard — no redeploy needed.
+export const dynamic = "force-dynamic";
 
 export default function Page() {
   return (
@@ -61,9 +67,13 @@ export default function Page() {
           </div>
           <div className="product-meta">
             <span className="product-name">I AM. Tee</span>
+            <span className="product-price">&#8377;999</span>
             <span className="product-status">Pre-order Open</span>
           </div>
-          <PreOrderForm />
+          <div className="preorder-row">
+            <PreOrderForm />
+            <PreOrderCounter />
+          </div>
           <div className="drop-copy">
             <p>This isn&rsquo;t scarcity. It&rsquo;s selection.</p>
             <p>
