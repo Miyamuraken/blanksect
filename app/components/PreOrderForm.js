@@ -79,8 +79,8 @@ export default function PreOrderForm() {
         .preorder-panel {
           margin-top: 1.25rem;
           padding: 1.25rem;
-          border: 1px solid var(--border);
-          background: var(--bg-raised);
+          border: 1px solid rgba(244, 242, 236, 0.18);
+          background: #111110;
           max-width: 420px;
         }
         .preorder-form {
@@ -91,26 +91,28 @@ export default function PreOrderForm() {
         input,
         select {
           background: transparent;
-          border: 1px solid var(--border);
-          color: var(--text);
+          border: 1px solid rgba(244, 242, 236, 0.25);
+          color: #f4f2ec;
           font-family: var(--font-body);
           font-size: 0.9rem;
+          font-weight: 500;
           padding: 0.7rem 0.85rem;
           outline: none;
         }
         input::placeholder {
-          color: var(--text-muted);
+          color: rgba(244, 242, 236, 0.55);
         }
         select option {
-          background: var(--bg);
-          color: var(--text);
+          background: #111110;
+          color: #f4f2ec;
         }
         .preorder-submit {
           background: transparent;
-          border: 1px solid var(--bronze);
-          color: var(--bronze);
+          border: 1px solid #d4af6a;
+          color: #d4af6a;
           font-family: var(--font-mono);
           font-size: 0.75rem;
+          font-weight: 600;
           letter-spacing: 0.1em;
           text-transform: uppercase;
           padding: 0.8rem;
@@ -118,13 +120,13 @@ export default function PreOrderForm() {
           transition: background 0.2s ease, color 0.2s ease;
         }
         .preorder-submit:hover {
-          background: var(--bronze);
-          color: var(--bg);
+          background: #d4af6a;
+          color: #111110;
         }
         .preorder-upi {
           margin-top: 1rem;
           padding-top: 1rem;
-          border-top: 1px solid var(--border);
+          border-top: 1px solid rgba(244, 242, 236, 0.18);
           display: flex;
           flex-direction: column;
           gap: 0.4rem;
@@ -132,25 +134,27 @@ export default function PreOrderForm() {
         .preorder-upi-label {
           font-family: var(--font-mono);
           font-size: 0.7rem;
+          font-weight: 600;
           letter-spacing: 0.08em;
           text-transform: uppercase;
-          color: var(--text-muted);
+          color: rgba(244, 242, 236, 0.65);
         }
         .preorder-upi-value {
           background: none;
           border: none;
-          color: var(--text);
+          color: #f4f2ec;
           font-family: var(--font-mono);
           font-size: 0.85rem;
+          font-weight: 600;
           text-align: left;
           padding: 0;
           cursor: pointer;
           text-decoration: underline;
-          text-decoration-color: var(--border);
+          text-decoration-color: rgba(244, 242, 236, 0.35);
           text-underline-offset: 3px;
         }
         .preorder-upi-value:hover {
-          text-decoration-color: var(--bronze);
+          text-decoration-color: #d4af6a;
         }
       `}</style>
     </div>
